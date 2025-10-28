@@ -1,0 +1,32 @@
+[project]
+name = "pynchronize"
+version = "0.1.0"
+description = "Distributed Synchronization System with Raft consensus, distributed queue, and cache coherence"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "aiohttp>=3.9.0",
+    "redis>=5.0.0",
+    "pyyaml>=6.0.0",
+    "prometheus-client>=0.19.0",
+    "python-dotenv>=1.0.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "locust>=2.20.0",
+    "httpx>=0.26.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
